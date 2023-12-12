@@ -110,6 +110,10 @@ git clone https://github.com/csandker/Azure-AccessPermissions $toolsPath\Azure-A
 git clone https://github.com/hausec/PowerZure $toolsPath\PowerZure
 git clone https://github.com/MelloSec/Sessioner $toolsPath\Sessioner
 git clone https://github.com/MelloSec/PhirstPhish $toolsPath\PhirstPhish
+git clone https://github.com/dafthack/MFASweep $toolsPath\MFASweep
+git clone https://github.com/dafthack/MSOLSpray $toolsPath\MSOLSpray
+git clone https://github.com/AlteredSecurity/365-Stealer.git $toolsPath\365-Stealer
+
 
 # IE first run
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer"
@@ -186,6 +190,8 @@ Import-Module ExchangeOnlineManagement
 Import-Module AADInternals
 Import-Module Microsoft.Graph
 
+$toolsPath = "C:\Tools" 
+
 # Token Tactics
 git clone https://github.com/rvrsh3ll/TokenTactics.git $toolsPath\TokenTactics
 cd $toolsPath\TokenTactics
@@ -209,13 +215,11 @@ pip install roadlib
 pip install roadrecon
 pip install roadtx
 
-# TrevorSpray
-pip install git+https://github.com/blacklanternsecurity/trevorproxy
-pip install git+https://github.com/blacklanternsecurity/trevorspray
-
 # TeamFiltration
 iwr https://github.com/Flangvik/TeamFiltration/releases/download/v3.5.0/TeamFiltration-Linux-v3.5.0.zip -o $toolsPath\teamfiltration.zip
 Expand-Archive $toolsPath\teamfiltration.zip
+
+
 
 
 
@@ -235,3 +239,8 @@ Enable-PSRemoting -Force
 Enable-WindowsUpdate
 Enable-RemoteDesktop
 Install-WindowsUpdate
+
+
+# TrevorSpray
+pip install git+https://github.com/blacklanternsecurity/trevorproxy
+pip install git+https://github.com/blacklanternsecurity/trevorspray

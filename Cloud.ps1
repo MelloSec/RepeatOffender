@@ -58,7 +58,7 @@ Set-MpPreference -SubmitSamplesConsent NeverSend
 choco feature enable -n allowGlobalConfirmation
 choco install 7zip
 choco install git
-choco install posh-git
+choco install poshgit
 choco install microsoft-windows-terminal
 choco install vscode
 choco install vim
@@ -141,9 +141,6 @@ git clone https://github.com/rvrsh3ll/TokenTactics.git
 # AzureAppTools
 git clone https://github.com/rvrsh3ll/Azure-App-Tools
 
-# Blob Hunter
-git clone https://github.com/cyberark/BlobHunter.git
-
 # Azure Acces Permissions tool
 git clone https://github.com/csandker/Azure-AccessPermissions.git
 
@@ -159,12 +156,41 @@ git clone https://github.com/MelloSec/Patsy
 # pingTunnel
 git clone https://github.com/mellonaut/pingtunnel
 
+$toolsPath = "C:\Git"
+git clone https://github.com/dafthack/MailSniper.git $toolsPath\MailSniper
+git clone https://github.com/FortyNorthSecurity/Egress-Assess.git $toolsPath\Egress-Assess
+git clone https://github.com/NetSPI/MicroBurst
+git clone https://github.com/NetSPI/PowerUpSQL.git $toolsPath\PowerUpSQL
+git clone https://github.com/p3nt4/PowerShdll.git $toolsPath\PowerShdll
+git clone https://github.com/TheWover/donut.git $toolsPath\donut
+git clone https://github.com/ZeroPointSecurity/PhishingTemplates.git $toolsPath\PhishingTemplates
+git clone https://github.com/mgeeky/AzureRT $toolsPath\AzureRT
+git clone https://github.com/0xZDH/o365spray.git $toolsPath\o365spray
+git clone https://github.com/dafthack/GraphRunner.git $toolsPath\GraphRunner
+git clone https://github.com/csandker/Azure-AccessPermissions $toolsPath\Azure-AccessPermissions
+git clone https://github.com/MelloSec/Sessioner $toolsPath\Sessioner
+git clone https://github.com/MelloSec/PhirstPhish $toolsPath\PhirstPhish
+git clone https://github.com/AlteredSecurity/365-Stealer.git $toolsPath\365-Stealer
+
+
+# Password Spraying Tools
+# https://github.com/knavesec/CredMaster/wiki/
+git clone https://github.com/knavesec/CredMaster.git $toolsPath\CredMaster
+cd $toolsPath\CredMaster
+pip install -r requirements.txt
+cd ..
+
+# BlobHunter
+git clone https://github.com/cyberark/BlobHunter.git $toolsPath\BlobHunter
+cd $toolsPath\Blobhunter
+pip3 install -r requirements.txt
+
 # LinkedIn OSINT for usernames
 git clone https://github.com/mellonaut/linkedin2username
 
 # ROADTools
 git clone https://github.com/dirkjanm/ROADtools.git
-pip install roadrecon roadlib neo4j-driver
+pip install roadrecon roadlib roadtx neo4j-driver
 iwr https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-win-aarch64.zip -o geckodriver-win.zip
 # iwr https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux-aarch64.tar.gz -o geckodriver-lin.tar.gz
 

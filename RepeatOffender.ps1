@@ -10,6 +10,7 @@ Set-TimeZone -Name "Eastern Standard Time" -Verbose
 New-Item -Path C:\ -Name Temp -ItemType Directory -ErrorAction SilentlyContinue
 New-Item -Path C:\ -Name payloads -ItemType Directory -ErrorAction SilentlyContinue
 
+$toolsPath = "C:\Tools" 
 $env:TEMP = "C:\Temp"
 $env:TMP = "C:\Temp"
 
@@ -36,46 +37,48 @@ choco install putty
 choco install vscode
 choco install sysinternals --params "/InstallDir:$toolsPath\sysinternals"
 # choco install visualstudio2019community -y
-choco install openvpn -y
-choco install powertoys -y
-choco install dotnet-sdk --version=5.0.100 -y
-choco install dotnet-sdk -y
-choco install mingw -y
-choco install python3 -y
-choco install pip -y
-choco install golang  -y
-choco install x64dbg.portable -y
-choco install ollydbg -y
-choco install ida-free -y
-choco install wireshark -y
-choco install reshack -y
+choco install openvpn
+choco install powertoys
+choco install dotnet-sdk --version=5.0.100
+choco install netfx-4.8-devpack
+choco install dotnet-sdk
+choco install mingw
+choco install python3
+choco install pip
+choco install golang
+choco install x64dbg.portable
+choco install ollydbg
+choco install ida-free
+choco install wireshark
+choco install ngrok
+choco install wireguard
+
 
 # Install Malware related tooling
-choco install -y autohotkey
-choco install -y ngrok
-choco install -y wireguard
-choco install -y dotpeek
-choco install -y ghidra
-choco install -y cutter 
-choco install -y pestudio
-choco install -y pebear
-choco install -y pesieve
-choco install -y hollowshunter
-choco install -y dependencywalker  
-choco install -y ilspy
-choco install -y dnspy
-choco install -y procmon
-choco install -y procdot
-choco install -y processhacker
-choco install -y fiddler
-choco install -y regshot
-choco install -y dnscrypt-proxy
+choco install autohotkey
+choco install dotpeek
+choco install ghidra
+choco install cutter 
+choco install pestudio
+choco install pebear
+choco install pesieve
+choco install hollowshunter
+choco install dependencywalker  
+choco install ilspy
+choco install dnspy
+choco install procmon
+choco install procdot
+choco install processhacker
+choco install fiddler
+choco install regshot
+choco install dnscrypt-proxy
+choco install reshack
 
 $gitPath = "C:\Program Files\Git\bin"
 $env:Path = "$env:Path;$gitPath"
 Add-Content -Path $PROFILE -Value "Set-Location '$gitPath'"
 
-$toolPath = "C:\Tools" 
+
 
 # Need to refresh or reload here
 git clone https://github.com/BloodHoundAD/SharpHound3.git $toolsPath\SharpHound3
@@ -107,15 +110,6 @@ git clone https://github.com/csandker/Azure-AccessPermissions $toolsPath\Azure-A
 git clone https://github.com/hausec/PowerZure $toolsPath\PowerZure
 git clone https://github.com/MelloSec/Sessioner $toolsPath\Sessioner
 git clone https://github.com/MelloSec/PhirstPhish $toolsPath\PhirstPhish
-
-
-
-
-iwr https://github.com/BloodHoundAD/AzureHound/releases/download/v2.0.4/azurehound-linux-amd64.zip -o $toolsPath\azurehound.zip
-Expand-Archive $toolsPath\azurehound.zip
-
-iwr https://github.com/Flangvik/TeamFiltration/releases/download/v3.5.0/TeamFiltration-Linux-v3.5.0.zip -o $toolsPath\teamfiltration.zip
-Expand-Archive $toolsPath\teamfiltration.zip
 
 # IE first run
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer"
@@ -218,6 +212,12 @@ pip install roadtx
 # TrevorSpray
 pip install git+https://github.com/blacklanternsecurity/trevorproxy
 pip install git+https://github.com/blacklanternsecurity/trevorspray
+
+# TeamFiltration
+iwr https://github.com/Flangvik/TeamFiltration/releases/download/v3.5.0/TeamFiltration-Linux-v3.5.0.zip -o $toolsPath\teamfiltration.zip
+Expand-Archive $toolsPath\teamfiltration.zip
+
+
 
 # Set a nice wallpaper : 
 write-host "Setting a nice wallpaper"

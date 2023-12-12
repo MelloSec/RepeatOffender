@@ -30,6 +30,7 @@ choco install posh-git
 ## choco install googlechrome --ignore-checksums
 choco install heidisql --version=10.2.0.559900
 choco install openjdk11
+choco install python3
 choco install tabby
 choco install firefox
 choco install putty
@@ -91,6 +92,7 @@ git clone https://github.com/GhostPack/Seatbelt.git C:\tools\Seatbelt
 git clone https://github.com/HarmJ0y/DAMP.git C:\tools\DAMP
 git clone https://github.com/hfiref0x/UACME.git C:\tools\UACME
 git clone https://github.com/leechristensen/SpoolSample.git C:\tools\SpoolSample
+git clone https://github.com/NetSPI/MicroBurst
 git clone https://github.com/NetSPI/PowerUpSQL.git C:\tools\PowerUpSQL
 git clone https://github.com/p3nt4/PowerShdll.git C:\tools\PowerShdll
 git clone https://github.com/PowerShellMafia/PowerSploit.git C:\tools\PowerSploit
@@ -100,6 +102,21 @@ git clone https://github.com/rasta-mouse/Watson.git C:\tools\Watson
 git clone https://github.com/tevora-threat/SharpView.git C:\tools\SharpView
 git clone https://github.com/TheWover/donut.git C:\tools\donut
 git clone https://github.com/ZeroPointSecurity/PhishingTemplates.git C:\tools\PhishingTemplates
+git clone https://github.com/MelloSec/Sessioner
+git clone https://github.com/rvrsh3ll/TokenTactics.git
+git clone https://github.com/mgeeky/AzureRT
+git clone https://github.com/0xZDH/o365spray.git
+git clone https://github.com/knavesec/CredMaster.git
+git clone https://github.com/dafthack/GraphRunner.git
+git clone https://github.com/cyberark/blobhunter
+git clone https://github.com/csandker/Azure-AccessPermissions
+git clone https://github.com/hausec/PowerZure
+
+iwr https://github.com/BloodHoundAD/AzureHound/releases/download/v2.0.4/azurehound-linux-amd64.zip -o azurehound.zip
+Expand-Archive azurehound.zip
+
+iwr https://github.com/Flangvik/TeamFiltration/releases/download/v3.5.0/TeamFiltration-Linux-v3.5.0.zip -o teamfiltration.zip
+unzip ./teamfiltration.zip
 
 # IE first run
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer"
@@ -159,7 +176,6 @@ Disable-BingSearch
 Set-TaskbarOptions -Dock Bottom
 Set-ExplorerOptions -showHiddenFilesFoldersDrives -showFileExtensions
 
-
 # O365 Tools
 # Install modules
 Install-Module -Name Az -Force
@@ -189,6 +205,12 @@ git clone https://github.com/knavesec/CredMaster.git
 cd CredMaster
 pip install -r requirements.txt
 cd ..
+
+pip install roadlib
+pip install roadrecon
+pip install roadtx
+pip install git+https://github.com/blacklanternsecurity/trevorproxy
+pip install git+https://github.com/blacklanternsecurity/trevorspray
 
 
 # Set a nice wallpaper : 

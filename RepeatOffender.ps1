@@ -1,7 +1,6 @@
 
 # Script to customize the box and install a bunch of offensive development and security tools
-# First part is Rasta Mouses VM from the Certified Red Team Operator course and the rest if focused on malware devlopment and reversing
-
+# Based on Rasta Mouse CRTO VM with a bunch of O365 and Malware tools
 
 # Install boxstarter with chocolatey and basic configuration
 . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
@@ -26,7 +25,7 @@ Set-MpPreference -SubmitSamplesConsent NeverSend
 choco feature enable -n allowGlobalConfirmation
 choco install 7zip
 choco install git
-choco install posh-git
+choco install poshgit
 ## choco install googlechrome --ignore-checksums
 choco install heidisql --version=10.2.0.559900
 choco install openjdk11

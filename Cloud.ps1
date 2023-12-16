@@ -1,32 +1,34 @@
-# Install PowerShell Modules with force and auto accept
-$modules = @("AADInternals", "AzureADPreview", "Az", "AzureAd", "Microsoft.Graph")
-foreach ($module in $modules) {
-    Install-Module -Name $module -Force -AllowClobber -Scope CurrentUser -Confirm:$false
-}
+whoami
 
-# Function to check if Chocolatey is already installed
-function IsChocolateyInstalled {
-    $chocoPath = Get-Command choco -ErrorAction SilentlyContinue
-    return $chocoPath -ne $null
-}
+# # Install PowerShell Modules with force and auto accept
+# $modules = @("AADInternals", "AzureADPreview", "Az", "AzureAd", "Microsoft.Graph")
+# foreach ($module in $modules) {
+#     Install-Module -Name $module -Force -AllowClobber -Scope CurrentUser -Confirm:$false
+# }
 
-# Install Chocolatey if it's not already installed
-if (-not (IsChocolateyInstalled)) {
-    # Set up the Chocolatey package manager
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-}
-else {
-    Write-Output "Chocolatey is already installed."
-}
+# # # Function to check if Chocolatey is already installed
+# # function IsChocolateyInstalled {
+# #     $chocoPath = Get-Command choco -ErrorAction SilentlyContinue
+# #     return $chocoPath -ne $null
+# # }
 
-# Verify installations
-Write-Output "Installed PowerShell Modules:"
-Get-Module -ListAvailable $modules
+# # # Install Chocolatey if it's not already installed
+# # if (-not (IsChocolateyInstalled)) {
+# #     # Set up the Chocolatey package manager
+# #     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+# #     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# # }
+# # else {
+# #     Write-Output "Chocolatey is already installed."
+# # }
 
-# Check if Chocolatey is installed
-if (IsChocolateyInstalled) {
-    Write-Output "Chocolatey is installed."
-} else {
-    Write-Output "Chocolatey installation failed."
-}
+# # Verify installations
+# Write-Output "Installed PowerShell Modules:"
+# Get-Module -ListAvailable $modules
+
+# # # Check if Chocolatey is installed
+# # if (IsChocolateyInstalled) {
+# #     Write-Output "Chocolatey is installed."
+# # } else {
+# #     Write-Output "Chocolatey installation failed."
+# # }

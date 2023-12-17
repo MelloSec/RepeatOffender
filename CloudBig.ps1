@@ -28,7 +28,6 @@ reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v WallpaperStyle /t REG_DWORD
 # reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v StretchWallpaper /t REG_DWORD /d "2" /f 
 reg add "HKEY_CURRENT_USER\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f
 
-
 # Dev Tools
 choco feature enable -n allowGlobalConfirmation
 choco install 7zip
@@ -36,6 +35,9 @@ choco install git
 choco install poshgit
 choco install microsoft-windows-terminal
 choco install vscode
+choco install procmon
+choco install procexp
+choco install dnspy
 
 # RTO paths and Defender
 New-Item -Path C:\ -Name Temp -ItemType Directory -ErrorAction SilentlyContinue
@@ -53,25 +55,27 @@ Add-MpPreference -ExclusionPath "C:\Git\"
 Set-MpPreference -MAPSReporting Disabled
 Set-MpPreference -SubmitSamplesConsent NeverSend
 
-# Cloud tools
-choco install awscli
+# Cloud CLIs
 choco install azure-cli
-choco install terraform
+choco install awscli
+# choco install terraform
 
 # Proxy software
 choco install proxifier
 choco install burp-suite-free-edition
 choco install firefox
 
+
 # languages
-refreshenv
+# refreshenv
 choco install python3
 choco install pip
 choco install golang
-choco install heidisql --version=10.2.0.559900
 choco install openjdk11
-choco install neo4j-community
-choco install sysinternals --params "/InstallDir:C:\tools\sysinternals"
+
+# choco install sysinternals --params "/InstallDir:C:\tools\sysinternals"
+# choco install heidisql --version=10.2.0.559900
+# choco install neo4j-community
 
 # Powershell Modules
 Install-Module aadinternals -force -Confirm -AllowClobber -Scope CurrentUser

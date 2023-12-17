@@ -17,6 +17,18 @@ Add-MpPreference -ExclusionPath "C:\tools\"
 Set-MpPreference -MAPSReporting Disabled
 Set-MpPreference -SubmitSamplesConsent NeverSend
 
+# Set a nice wallpaper : 
+write-host "Setting a nice wallpaper"
+$web_dl = new-object System.Net.WebClient
+$wallpaper_url = "https://dev.straylightsecurity.com/assets/lich3.jpg"
+$wallpaper_file = "C:\Users\Public\Pictures\desktop.jpg"
+$web_dl.DownloadFile($wallpaper_url, $wallpaper_file)
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Users\Public\Pictures\desktop.jpg" /f
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v WallpaperStyle /t REG_DWORD /d "0" /f 
+# reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v StretchWallpaper /t REG_DWORD /d "2" /f 
+reg add "HKEY_CURRENT_USER\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f
+
+
 # Dev Tools
 choco feature enable -n allowGlobalConfirmation
 choco install 7zip

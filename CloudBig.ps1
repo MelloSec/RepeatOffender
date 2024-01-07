@@ -1,6 +1,6 @@
 # Install boxstarter with chocolatey and basic configuration
-. { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+# . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
+# Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 Set-TimeZone -Name "Eastern Standard Time" -Verbose
 
 New-Item -Path C:\ -Name Temp -ItemType Directory -ErrorAction SilentlyContinue
@@ -17,26 +17,27 @@ Add-MpPreference -ExclusionPath "C:\tools\"
 Set-MpPreference -MAPSReporting Disabled
 Set-MpPreference -SubmitSamplesConsent NeverSend
 
-# Packages
+# Set a nice wallpaper : 
+write-host "Setting a nice wallpaper"
+$web_dl = new-object System.Net.WebClient
+$wallpaper_url = "https://dev.straylightsecurity.com/assets/lich3.jpg"
+$wallpaper_file = "C:\Users\Public\Pictures\desktop.jpg"
+$web_dl.DownloadFile($wallpaper_url, $wallpaper_file)
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Users\Public\Pictures\desktop.jpg" /f
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v WallpaperStyle /t REG_DWORD /d "0" /f 
+# reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v StretchWallpaper /t REG_DWORD /d "2" /f 
+reg add "HKEY_CURRENT_USER\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f
+
+# Dev Tools
 choco feature enable -n allowGlobalConfirmation
 choco install 7zip
 choco install git
-choco install posh-git
-## choco install googlechrome --ignore-checksums
-choco install heidisql --version=10.2.0.559900
-choco install openjdk11
+choco install poshgit
 choco install microsoft-windows-terminal
-choco install firefox
 choco install vscode
-choco install burp-suite-community
-choco install sysinternals --params "/InstallDir:C:\tools\sysinternals"
-
-# Install boxstarter with chocolatey and basic configuration
-. { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-Set-TimeZone -Name "Eastern Standard Time" -Verbose
-
-
+choco install procmon
+choco install procexp
+choco install dnspy
 
 # RTO paths and Defender
 New-Item -Path C:\ -Name Temp -ItemType Directory -ErrorAction SilentlyContinue
@@ -54,54 +55,40 @@ Add-MpPreference -ExclusionPath "C:\Git\"
 Set-MpPreference -MAPSReporting Disabled
 Set-MpPreference -SubmitSamplesConsent NeverSend
 
-# Packages 
-choco feature enable -n allowGlobalConfirmation
-choco install 7zip
-choco install git
-choco install poshgit
-choco install microsoft-windows-terminal
-choco install vscode
-choco install vim
-# choco install sysinternals --params "/InstallDir:C:\tools\sysinternals"
-
-## choco install googlechrome --ignore-checksums
-choco install heidisql --version=10.2.0.559900
-choco install openjdk11
-
-# Cloud tools
-choco install awscli
+# Cloud CLIs
 choco install azure-cli
-choco install terraform
+choco install awscli
+# choco install terraform
 
 # Proxy software
 choco install proxifier
 choco install burp-suite-free-edition
 choco install firefox
-choco install neo4j-community
 
 
 # languages
-refreshenv
-choco install python3 pip
+# refreshenv
+choco install python3
+choco install pip
 choco install golang
-pip install virtualenv
+choco install openjdk11
 
+# choco install sysinternals --params "/InstallDir:C:\tools\sysinternals"
+# choco install heidisql --version=10.2.0.559900
+# choco install neo4j-community
+
+# Powershell Modules
 Install-Module aadinternals -force -Confirm -AllowClobber -Scope CurrentUser
 Install-Module Az -Force -Confirm -AllowClobber -Scope CurrentUser
-# Install-Module AzureAD -Force -Confirm -AllowClobber -Scope CurrentUser
 Install-Module -Name ExchangeOnlineManagement -Force -Confirm -AllowClobber -Scope CurrentUser
 Install-Module Microsoft.Graph -Force -Confirm -AllowClobber -Scope CurrentUser # OPTIONAL
 Install-Module MSOnline -Force -Confirm -AllowClobber -Scope CurrentUser        # OPTIONAL
 Install-Module AzureADPreview -Force -Confirm -AllowClobber -Scope CurrentUser  # OPTIONAL
-
-
-Import-Module Az
-Import-Module AzureADPreview
-Import-Module Microsoft.Graph 
-import-module aadinternals
+# Install-Module AzureAD -Force -Confirm -AllowClobber -Scope CurrentUser
 
 # Public Repos
 cd C:\Git
+pip install virtualenv
 
 # Fireprox
 git clone https://github.com/ustayready/fireprox
@@ -200,12 +187,6 @@ git clone https://github.com/stealthcopter/deepce.git
 #  Subdomain takeover
 git clone https://github.com/Ice3man543/SubOver.git
 
-# Patator for better password attacks
-git clone https://github.com/lanjelot/patator.git
-git clone https://github.com/danielmiessler/SecLists.git
-docker build -t patator patator/
-docker run -it --rm -v $PWD/SecLists/Passwords:/mnt patator dummy_test data=FILE0 0=/mnt/richelieu-french-top5000.txt
-
 # ROPCI for MFA bypass testing using obscure flow
 git clone https://github.com/mellonaut/ropci
 wget https://github.com/wunderwuzzi23/ropci/releases/download/v0.1/ropci-linux-v0.1.zip
@@ -220,6 +201,16 @@ wget https://github.com/wunderwuzzi23/ropci/releases/download/v0.1/ropci-linux-v
 # Changes Neo4j credentials to: neo4j/neo4jj
 # curl -H "Content-Type: application/json" -X POST -d '{"password":"neo4jj"}' -u neo4j:neo4j http://localhost:7474/user/neo4j/password
 
+# Import-Module Az
+# Import-Module AzureADPreview
+# Import-Module Microsoft.Graph 
+# import-module aadinternals
+
+# Patator for better password attacks
+# git clone https://github.com/lanjelot/patator.git
+# git clone https://github.com/danielmiessler/SecLists.git
+# docker build -t patator patator/
+# docker run -it --rm -v $PWD/SecLists/Passwords:/mnt patator dummy_test data=FILE0 0=/mnt/richelieu-french-top5000.txt
 
 
 echo "Import-Module AADInternals

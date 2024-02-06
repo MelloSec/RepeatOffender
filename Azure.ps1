@@ -28,6 +28,9 @@ git clone https://github.com/dafthack/MFASweep
 # MSOLSpray for fine-enumeration of accounts / checking valid creds without a PUSH notification
 git clone https://github.com/dafthack/MSOLSpray
 
+# O365Creeper
+git clone https://github.com/LMGsec/o365creeper
+
 # O365-Stealer
 git clone https://github.com/AlteredSecurity/365-Stealer.git
 
@@ -49,13 +52,11 @@ git clone https://github.com/hausec/PowerZure.git
 # Egress Assessor
 git clone https://github.com/FortyNorthSecurity/Egress-Assess.git $toolsPath\Egress-Assess
 
-# Microburst
-git clone https://github.com/NetSPI/MicroBurst
-
 # BlobHunter
 git clone https://github.com/cyberark/BlobHunter.git $toolsPath\BlobHunter
 cd $toolsPath\Blobhunter
 pip3 install -r requirements.txt
+cd ..
 
 # ROADTools
 git clone https://github.com/dirkjanm/ROADtools.git
@@ -80,3 +81,10 @@ git clone https://github.com/MarkoH17/Spray365
 cd Spray365
 pip install -r requirements.txt -U
 python spray365.py
+cd ..
+
+# Bridgekeeper for scraping linkedin
+git clone https://github.com/0xZDH/BridgeKeeper
+cd BridgeKeeper
+pip install -r requirements.txt
+cd ..

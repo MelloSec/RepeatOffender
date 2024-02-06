@@ -78,13 +78,13 @@ choco install openjdk11
 # choco install neo4j-community
 
 # Powershell Modules
-Install-Module aadinternals -force -Confirm -AllowClobber -Scope CurrentUser
-Install-Module Az -Force -Confirm -AllowClobber -Scope CurrentUser
-Install-Module -Name ExchangeOnlineManagement -Force -Confirm -AllowClobber -Scope CurrentUser
-Install-Module Microsoft.Graph -Force -Confirm -AllowClobber -Scope CurrentUser # OPTIONAL
-Install-Module MSOnline -Force -Confirm -AllowClobber -Scope CurrentUser        # OPTIONAL
-Install-Module AzureADPreview -Force -Confirm -AllowClobber -Scope CurrentUser  # OPTIONAL
-# Install-Module AzureAD -Force -Confirm -AllowClobber -Scope CurrentUser
+Install-Module aadinternals -force  -AllowClobber -Scope CurrentUser
+Install-Module Az -Force -AllowClobber -Scope CurrentUser
+Install-Module -Name ExchangeOnlineManagement -Force  -AllowClobber -Scope CurrentUser
+Install-Module Microsoft.Graph -Force  -AllowClobber -Scope CurrentUser # OPTIONAL
+Install-Module MSOnline -Force  -AllowClobber -Scope CurrentUser        # OPTIONAL
+Install-Module AzureADPreview -Force -AllowClobber -Scope CurrentUser  # OPTIONAL
+Install-Module AzureAD -Force  -AllowClobber -Scope CurrentUser
 
 # Public Repos
 cd C:\Git

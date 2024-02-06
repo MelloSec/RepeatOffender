@@ -1,3 +1,6 @@
+# Azure CLI
+choco install -y azure-cli
+
 # Powershell Modules
 Install-Module aadinternals -force  -AllowClobber -Scope CurrentUser
 Install-Module Az -Force -AllowClobber -Scope CurrentUser
@@ -7,7 +10,7 @@ Install-Module MSOnline -Force  -AllowClobber -Scope CurrentUser        # OPTION
 Install-Module AzureADPreview -Force -AllowClobber -Scope CurrentUser  # OPTIONAL
 Install-Module AzureAD -Force  -AllowClobber -Scope CurrentUser
 
-# Public Repos
+# Repos
 mkdir C:\Git
 $toolsPath = "C:\Git"
 cd C:\Git

@@ -169,6 +169,28 @@ git clone https://github.com/AlteredSecurity/365-Stealer.git
 cd 365-Stealer
 pip install -r requirements.txt 
 
-# XAMPP
-iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
-Start-Process C:\xampp.exe
+# AzureHound - Download the correct AzureHound binary for the detected OS
+$tok = $tokenz.refresh_token
+$osType = $env:OS
+$binaryName = ""
+$exePath = ""
+if ($osType -eq "Windows_NT") {
+    $os = "windows"
+    Write-Output "Detected Windows OS."
+    $binaryName = "azurehound-windows-amd64.zip"
+    $exePath = ".\azurehound.exe"
+} else {
+    $os = "linux"
+    Write-Output "Detected Linux OS."
+    $binaryName = "azurehound-linux-amd64.zip"
+    $exePath = "./azurehound"
+}
+$outputZipFile = $binaryName
+$downloadUrl = "https://github.com/BloodHoundAD/AzureHound/releases/latest/download/$binaryName"
+Invoke-WebRequest -Uri $downloadUrl -OutFile $outputZipFile
+Expand-Archive -LiteralPath $outputZipFile -DestinationPath . -Force
+Remove-Item -Path $outputZipFile -Force
+
+# # XAMPP
+# iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
+# Start-Process C:\xampp.exe

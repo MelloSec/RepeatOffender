@@ -1,5 +1,6 @@
 # Azure CLI
 choco install -y azure-cli
+choco install git
 
 # Powershell Modules
 Install-Module aadinternals -force  -AllowClobber -Scope CurrentUser
@@ -52,6 +53,9 @@ git clone https://github.com/hausec/PowerZure.git
 # Egress Assessor
 git clone https://github.com/FortyNorthSecurity/Egress-Assess.git $toolsPath\Egress-Assess
 
+
+
+### Python Based
 # BlobHunter
 git clone https://github.com/cyberark/BlobHunter.git $toolsPath\BlobHunter
 cd $toolsPath\Blobhunter

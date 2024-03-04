@@ -18,9 +18,31 @@ mkdir C:\Git
 $toolsPath = "C:\Git"
 cd C:\Git
 
-# Teamfiltration 
-iwr https://github.com/Flangvik/TeamFiltration/releases/download/v3.5.2/TeamFiltration-v3.5.2-win-x86_64.zip -o TeamFiltration.zip
-Expand-Arhcive Teamfiltration.zip
+# Determine the Operating System
+if ($IsWindows) {
+    # Windows-specific commands
+    $url = "https://github.com/Flangvik/TeamFiltration/releases/download/v3.5.2/TeamFiltration-v3.5.2-win-x86_64.zip"
+    $outfile = "TeamFiltration.zip"
+    iwr $url -Outfile $outfile
+    Expand-Archive -Path $outfile -DestinationPath .\TeamFiltration
+} elseif ($IsLinux) {
+    # Linux-specific commands
+    $url = "https://github.com/Flangvik/TeamFiltration/releases/download/v3.5.3/TeamFiltration-v3.5.3-linux-x86_64.zip"
+    $outfile = "TeamFiltrationLin.zip"
+    iwr $url -Outfile $outfile
+    # For Linux, using unzip if Expand-Archive is not available
+    # PowerShell Core on Linux might not have Expand-Archive readily available
+    if (Get-Command 'Expand-Archive' -ErrorAction SilentlyContinue) {
+        Expand-Archive -Path $outfile -DestinationPath .\TeamFiltrationLin
+    } else {
+        # Assuming unzip is installed; if not, it can be installed via package manager
+        # For example, on Ubuntu: sudo apt-get install unzip
+        bash -c "unzip $outfile -d ./TeamFiltrationLin"
+    }
+} else {
+    Write-Output "Unsupported OS."
+}
+
 
 # Mailsniper for searching mailboxes for creds
 git clone https://github.com/dafthack/MailSniper.git

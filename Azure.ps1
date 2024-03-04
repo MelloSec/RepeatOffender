@@ -1,6 +1,18 @@
-# Azure CLI
-choco install -y azure-cli
-choco install -y git
+# Check Operating System and Install Azure CLI and Git
+if ($IsWindows) {
+    # Ensure Chocolatey is installed before running these commands
+    # Install Azure CLI
+    choco install -y azure-cli
+    # Install Git
+    choco install -y git
+} elseif ($IsLinux) {
+    # Install Azure CLI
+    curl -L https://aka.ms/InstallAzureCli | bash
+    # Install Git
+    sudo apt-get update && sudo apt-get install -y git
+} else {
+    Write-Output "Unsupported OS."
+}
 
 # Powershell Modules
 # Install-Module PSWindowsUpdate -Accept -Force

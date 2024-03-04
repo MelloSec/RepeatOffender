@@ -14,10 +14,23 @@ Install-Module AzureAD -Force  -AllowClobber -Scope CurrentUser
 
 Install-Package python -Scope CurrentUser
 
-# Repos
-mkdir C:\Git
-$toolsPath = "C:\Git"
-cd C:\Git
+# Check Operating System and Set Tools Path
+if ($IsWindows) {
+    $toolsPath = "C:\Git"
+} elseif ($IsLinux) {
+    $toolsPath = "~/Git"
+} else {
+    Write-Output "Unsupported OS."
+    return
+}
+
+# Create the directory if it doesn't exist
+if (-not (Test-Path $toolsPath)) {
+    New-Item -ItemType Directory -Path $toolsPath | Out-Null
+}
+
+# Change directory to the tools path
+Set-Location $toolsPath
 
 # Determine the Operating System
 if ($IsWindows) {
@@ -44,7 +57,6 @@ if ($IsWindows) {
     Write-Output "Unsupported OS."
 }
 
-
 # Mailsniper for searching mailboxes for creds
 git clone https://github.com/dafthack/MailSniper.git
 
@@ -56,6 +68,9 @@ git clone https://github.com/LMGsec/o365creeper
 
 # O365-Stealer
 git clone https://github.com/AlteredSecurity/365-Stealer.git
+
+# GraphRunner
+git clone https://github.com/dafthack/GraphRunner
 
 # TokenTactics
 git clone https://github.com/rvrsh3ll/TokenTactics.git
@@ -105,7 +120,6 @@ cd Spray365
 pip install -r requirements.txt -U
 python spray365.py
 cd ..
-
 
 # BlobHunter
 git clone https://github.com/cyberark/BlobHunter.git $toolsPath\BlobHunter

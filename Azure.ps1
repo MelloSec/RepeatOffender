@@ -9,7 +9,7 @@ if ($IsWindows) {
     # Install Azure CLI
     curl -L https://aka.ms/InstallAzureCli | bash
     # Install Git
-    sudo apt-get update && sudo apt-get install -y git
+    sudo apt-get update && sudo apt-get install -y git unizp
 } else {
     Write-Output "Unsupported OS."
 }

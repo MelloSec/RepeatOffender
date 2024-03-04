@@ -1,6 +1,6 @@
 # Azure CLI
 choco install -y azure-cli
-choco install git
+choco install -y git
 
 # Powershell Modules
 Install-Module aadinternals -force  -AllowClobber -Scope CurrentUser
@@ -10,6 +10,8 @@ Install-Module Microsoft.Graph -Force  -AllowClobber -Scope CurrentUser # OPTION
 Install-Module MSOnline -Force  -AllowClobber -Scope CurrentUser        # OPTIONAL
 Install-Module AzureADPreview -Force -AllowClobber -Scope CurrentUser  # OPTIONAL
 Install-Module AzureAD -Force  -AllowClobber -Scope CurrentUser
+
+Install-Package python -Scope CurrentUser
 
 # Repos
 mkdir C:\Git

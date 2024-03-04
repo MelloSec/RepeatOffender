@@ -94,3 +94,12 @@ git clone https://github.com/0xZDH/BridgeKeeper
 cd BridgeKeeper
 pip install -r requirements.txt
 cd ..
+
+# 365 Stealer
+git clone https://github.com/AlteredSecurity/365-Stealer.git
+cd 365-Stealer
+pip install -r requirements.txt 
+
+# XAMPP
+iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
+Start-Process C:\xampp.exe

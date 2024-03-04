@@ -114,6 +114,9 @@ git clone https://github.com/hausec/PowerZure.git
 # Egress Assessor
 git clone https://github.com/FortyNorthSecurity/Egress-Assess.git
 
+# Nishang 
+git clone https://github.com/samratashok/nishang
+
 # MSOLSpray for fine-enumeration of accounts / checking valid creds without a PUSH notification
 git clone https://github.com/dafthack/MSOLSpray
 

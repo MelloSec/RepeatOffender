@@ -78,9 +78,6 @@ git clone https://github.com/dafthack/MFASweep
 # O365Creeper
 git clone https://github.com/LMGsec/o365creeper
 
-# O365-Stealer
-git clone https://github.com/AlteredSecurity/365-Stealer.git
-
 # GraphRunner
 git clone https://github.com/dafthack/GraphRunner
 

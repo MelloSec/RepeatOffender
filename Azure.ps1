@@ -206,3 +206,7 @@ Remove-Item -Path $outputZipFile -Force
 # # XAMPP
 # iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
 # Start-Process C:\xampp.exe
+# Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
+# Start XAMPP as admin
+# uncomment ;extension=sqlite3` from  Apache/php.ini
+# Set Apache to run Port 8000 to avoid conflict with Stealer on 443

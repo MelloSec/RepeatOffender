@@ -5,7 +5,7 @@
 .\choco.ps1
 ```
 
-### Azure Tools - Windows or Linux
+### Azure Tools - Windows or Linux (Can run in CloudShell)
 ```powershell
 .\Azure.ps1
 ```

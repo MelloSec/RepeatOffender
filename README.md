@@ -17,6 +17,5 @@
 
 ### Cloud Tools - Windows Only
 ```powershell
-.\Cloud.ps1
-.\CloudBig.ps1 # might be old
+.\CloudBig.ps1
 ```

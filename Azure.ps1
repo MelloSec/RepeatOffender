@@ -210,3 +210,5 @@ Remove-Item -Path $outputZipFile -Force
 # Start XAMPP as admin
 # uncomment ;extension=sqlite3` from  Apache/php.ini
 # Set Apache to run Port 8000 to avoid conflict with Stealer on 443
+# cd C:\xampp\htdocs 
+# pip install -r requirements.txt

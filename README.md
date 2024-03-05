@@ -1,6 +1,6 @@
 ﻿## RepeatOffender
 
-### Usage - Prep for Chocolatey first so the Other Scripts can run
+### Prep - Setup Chocolatey separately first so the Other Scripts can run with choco in PATH
 ```powershell
 .\choco.ps1
 ```

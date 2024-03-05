@@ -1,14 +1,16 @@
 ﻿## RepeatOffender
 
-### Azure Tools, Windows or Linux
-
+### Azure Tools - Windows or Linux
 ```powershell
 .\Azure.ps1
 ```
 
-### Installs various offensive security tools and prepares the system for use in testing pens.
-
+### Various offensive security tools for use in testing pens - Windows Only
 ```powershell
 .\RepeatOffender.ps1
 ```
 
+### Fully Automated Use - Prep for Chocolatey first so the Other Scripts can run
+```powershell
+.\choco.ps1
+```

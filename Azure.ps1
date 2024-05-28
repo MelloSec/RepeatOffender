@@ -19,10 +19,9 @@ if ($IsWindows) {
 Install-Module aadinternals -force  -AllowClobber -Scope CurrentUser
 Install-Module Az -Force -AllowClobber -Scope CurrentUser
 Install-Module -Name ExchangeOnlineManagement -Force  -AllowClobber -Scope CurrentUser
-Install-Module MSOnline -Force  -AllowClobber -Scope CurrentUser        # OPTIONAL
-Install-Module AzureADPreview -Force -AllowClobber -Scope CurrentUser  # OPTIONAL
-Install-Module AzureAD -Force  -AllowClobber -Scope CurrentUser
-# Install-Module Microsoft.Graph -Force  -AllowClobber -Scope CurrentUser # OPTIONAL
+Install-Module MSOnline -Force  -AllowClobber -Scope CurrentUser   
+Install-Module AzureADPreview -Force -AllowClobber -Scope CurrentUser  
+Install-Module Microsoft.Graph -Force  -AllowClobber -Scope CurrentUser
 
 Install-Package python -Scope CurrentUser
 

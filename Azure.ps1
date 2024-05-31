@@ -43,7 +43,8 @@ if ($IsWindows) {
     # Install Azure CLI
     curl -L https://aka.ms/InstallAzureCli | bash
     # Install Git
-    sudo apt-get update && sudo apt-get install -y git unzip terraform tmux
+    sudo apt-get update -y
+    sudo apt-get install -y git unzip terraform tmux
     # Function Tools
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg

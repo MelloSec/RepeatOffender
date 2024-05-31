@@ -26,8 +26,7 @@ if ($scriptUrl) {
 } elseif ($RepeatOffender) {
     $selectedUrl = $urlMapping.RepeatOffender
 } else {
-    Write-Error "No script URL or switch parameter provided."
-    exit 1
+    $selectedUrl = $urlMapping.Azure
 }
 
 # Install Script

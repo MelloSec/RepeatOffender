@@ -47,7 +47,7 @@ function Test-ChocolateyInPath {
 }
 
 # Reload the session
-Reload-PowerShellSession
+# Reload-PowerShellSession
 
 # After reloading the session, check if Chocolatey is in the PATH and execute another script if it is
 # After reloading the session, check if Chocolatey is in the PATH and execute the selected script if it is

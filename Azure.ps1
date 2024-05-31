@@ -33,12 +33,12 @@ if ($IsWindows) {
     # XAMPP
     iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
     Start-Process C:\xampp.exe
-    Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
-    # Start XAMPP as admin
-    # uncomment ;extension=sqlite3` from  Apache/php.ini
-    # Set Apache to run Port 8000 to avoid conflict with 365stealer on 443
-    cd C:\xampp\htdocs 
-    pip install -r requirements.txt
+    # Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
+    # # Start XAMPP as admin
+    # # uncomment ;extension=sqlite3` from  Apache/php.ini
+    # # Set Apache to run Port 8000 to avoid conflict with 365stealer on 443
+    # cd C:\xampp\htdocs 
+    # pip install -r requirements.txt
 } elseif ($IsLinux) {
     # Install Azure CLI
     curl -L https://aka.ms/InstallAzureCli | bash

@@ -7,7 +7,7 @@ function Set-OSVariables {
         $global:IsLinux = $false
     } else {
         Write-Error "Unsupported OS."
-        exit 1
+
     }
 }
 

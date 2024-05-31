@@ -1,18 +1,18 @@
-function Set-OSVariables {
-    if ($PSVersionTable.PSPlatform -eq 'Linux') {
-        $global:IsLinux = $true
-        $global:IsWindows = $false
-    } elseif ($PSVersionTable.PSPlatform -eq 'Win32NT') {
-        $global:IsWindows = $true
-        $global:IsLinux = $false
-    } else {
-        Write-Error "Unsupported OS."
+# function Set-OSVariables {
+#     if ($PSVersionTable.PSPlatform -eq 'Linux') {
+#         $global:IsLinux = $true
+#         $global:IsWindows = $false
+#     } elseif ($PSVersionTable.PSPlatform -eq 'Win32NT') {
+#         $global:IsWindows = $true
+#         $global:IsLinux = $false
+#     } else {
+#         Write-Error "Unsupported OS."
 
-    }
-}
+#     }
+# }
 
-# Set the OS variables
-Set-OSVariables
+# # Set the OS variables
+# Set-OSVariables
 
 # Check Operating System and Install Azure CLI and Git
 if ($IsWindows) {

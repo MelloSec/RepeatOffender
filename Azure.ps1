@@ -1,3 +1,19 @@
+function Set-OSVariables {
+    if ($PSVersionTable.PSPlatform -eq 'Linux') {
+        $global:IsLinux = $true
+        $global:IsWindows = $false
+    } elseif ($PSVersionTable.PSPlatform -eq 'Win32NT') {
+        $global:IsWindows = $true
+        $global:IsLinux = $false
+    } else {
+        Write-Error "Unsupported OS."
+        exit 1
+    }
+}
+
+# Set the OS variables
+Set-OSVariables
+
 # Check Operating System and Install Azure CLI and Git
 if ($IsWindows) {
     # Ensure Chocolatey is installed before running these commands

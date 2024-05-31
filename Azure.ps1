@@ -16,7 +16,6 @@
 
 # Check Operating System and Install Azure CLI and Git
 if ($IsWindows) {
-    # Ensure Chocolatey is installed before running these commands
     # Install Azure CLI
     choco install -y azure-cli
     # Install Python
@@ -32,7 +31,7 @@ if ($IsWindows) {
     # powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
     iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
     # XAMPP
-    iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
+    iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o 'C:\xampp.exe'
     Start-Process C:\xampp.exe
     # Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
     # # Start XAMPP as admin
@@ -40,6 +39,8 @@ if ($IsWindows) {
     # # Set Apache to run Port 8000 to avoid conflict with 365stealer on 443
     # cd C:\xampp\htdocs 
     # pip install -r requirements.txt
+
+    
 } elseif ($IsLinux) {
     # Install Azure CLI
     curl -L https://aka.ms/InstallAzureCli | bash

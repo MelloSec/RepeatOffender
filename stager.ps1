@@ -34,7 +34,7 @@ if ($scriptUrl) {
 $chocolateySetupScriptUrl = "https://raw.githubusercontent.com/MelloSec/RepeatOffender/main/Choco.ps1"
 
 # Run the Chocolatey setup script
-Invoke-Expression (Invoke-WebRequest -Uri $chocolateySetupScriptUrl -UseBasicParsing).Content
+Invoke-Expression (Invoke-WebRequest -Uri $chocolateySetupScriptUrl -UseBasicParsing)
 
 # Function to reload the PowerShell session
 function Reload-PowerShellSession {
@@ -54,7 +54,7 @@ Reload-PowerShellSession
 # After reloading the session, check if Chocolatey is in the PATH and execute the selected script if it is
 if (Test-ChocolateyInPath) {
     # Run the selected script
-    Invoke-Expression (Invoke-WebRequest -Uri $selectedUrl -UseBasicParsing).Content
+    Invoke-Expression (Invoke-WebRequest -Uri $selectedUrl -UseBasicParsing)
 } else {
     Write-Output "Chocolatey is not in the PATH. Please ensure it is installed correctly."
 }

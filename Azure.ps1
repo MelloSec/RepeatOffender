@@ -3,14 +3,39 @@ if ($IsWindows) {
     # Ensure Chocolatey is installed before running these commands
     # Install Azure CLI
     choco install -y azure-cli
+    # Install Python
+    Install-Package python -Scope CurrentUser
     # Install Git
     choco install -y git
-    choco install -y azure-functions-core-tools-3
+    choco install -y poshgit
+    choco install -y terraform
+    choco install -y azure-functions-core-tools
+    choco install -y burp-suite-free-edition
+    choco install -y postman
+    # Postman CLI
+    powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
+    # XAMPP
+    iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
+    Start-Process C:\xampp.exe
+    Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
+    # Start XAMPP as admin
+    # uncomment ;extension=sqlite3` from  Apache/php.ini
+    # Set Apache to run Port 8000 to avoid conflict with 365stealer on 443
+    cd C:\xampp\htdocs 
+    pip install -r requirements.txt
 } elseif ($IsLinux) {
     # Install Azure CLI
     curl -L https://aka.ms/InstallAzureCli | bash
     # Install Git
-    sudo apt-get update && sudo apt-get install -y git unzip terraform 
+    sudo apt-get update && sudo apt-get install -y git unzip terraform tmux
+    # Function Tools
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo apt-get update -y
+    sudo apt-get install -y azure-functions-core-tools-4
+    # Postman CLI
+    curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh    
 } else {
     Write-Output "Unsupported OS."
 }
@@ -23,8 +48,6 @@ Install-Module -Name ExchangeOnlineManagement -Force  -AllowClobber -Scope Curre
 Install-Module MSOnline -Force  -AllowClobber -Scope CurrentUser   
 Install-Module AzureADPreview -Force -AllowClobber -Scope CurrentUser  
 Install-Module Microsoft.Graph -Force  -AllowClobber -Scope CurrentUser
-
-Install-Package python -Scope CurrentUser
 
 # Check Operating System and Set Tools Path
 if ($IsWindows) {
@@ -203,12 +226,3 @@ Invoke-WebRequest -Uri $downloadUrl -OutFile $outputZipFile
 Expand-Archive -LiteralPath $outputZipFile -DestinationPath . -Force
 Remove-Item -Path $outputZipFile -Force
 
-# # XAMPP
-iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
-Start-Process C:\xampp.exe
-Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
-# Start XAMPP as admin
-# uncomment ;extension=sqlite3` from  Apache/php.ini
-# Set Apache to run Port 8000 to avoid conflict with Stealer on 443
-cd C:\xampp\htdocs 
-pip install -r requirements.txt

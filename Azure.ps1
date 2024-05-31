@@ -243,14 +243,30 @@ cd ..
 # 365 Stealer
 git clone https://github.com/AlteredSecurity/365-Stealer.git
 cd 365-Stealer
-pip install -r requirements.txt 
+pip install -r requirements.txt
+cd ..
 
 # AzureHound - Download the correct AzureHound binary for the detected OS
+# $tok = $tokenz.refresh_token
+# $osType = $env:OS
+# $binaryName = ""
+# $exePath = ""
+# if ($osType -eq "Windows_NT") {
+#     $os = "windows"
+#     Write-Output "Detected Windows OS."
+#     $binaryName = "azurehound-windows-amd64.zip"
+#     $exePath = ".\azurehound.exe"
+# } else {
+#     $os = "linux"
+#     Write-Output "Detected Linux OS."
+#     $binaryName = "azurehound-linux-amd64.zip"
+#     $exePath = "./azurehound"
+# }
 $tok = $tokenz.refresh_token
 $osType = $env:OS
 $binaryName = ""
 $exePath = ""
-if ($osType -eq "Windows_NT") {
+if ($IsWindows) {
     $os = "windows"
     Write-Output "Detected Windows OS."
     $binaryName = "azurehound-windows-amd64.zip"
@@ -261,6 +277,7 @@ if ($osType -eq "Windows_NT") {
     $binaryName = "azurehound-linux-amd64.zip"
     $exePath = "./azurehound"
 }
+
 $outputZipFile = $binaryName
 $downloadUrl = "https://github.com/BloodHoundAD/AzureHound/releases/latest/download/$binaryName"
 Invoke-WebRequest -Uri $downloadUrl -OutFile $outputZipFile

@@ -4,8 +4,17 @@
 ```powershell
 $stagerUrl = "https://raw.githubusercontent.com/MelloSec/RepeatOffender/main/stager.ps1"
 
-# Download and execute the stager script with the Azure switch
-Invoke-Expression (Invoke-WebRequest -Uri $stagerUrl -UseBasicParsing).Content -Azure
+$tempFile = New-TemporaryFile
+Invoke-WebRequest -Uri $stagerUrl -OutFile $tempFile -UseBasicParsing
+
+# Execute the temporary file with the Azure switch
+& $tempFile -Azure
+
+# Or, to pass a custom script URL
+& $tempFile -scriptUrl "https://example.com/custom-script.ps1"
+
+# Clean up the temporary file
+Remove-Item $tempFile
 ```
 
 ### Prep - Setup Chocolatey separately first so the Other Scripts can run with choco in PATH

@@ -118,6 +118,9 @@ git clone https://github.com/CompassSecurity/TokenTormentor
 # TokenPhisher
 git clone https://github.com/CompassSecurity/TokenPhisher
 
+# CARTP
+git clone https://github.com/mellosec/cartp
+
 # PhirstPhish
 git clone https://github.com/mellosec/phirstphish
 

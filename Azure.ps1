@@ -1,21 +1,7 @@
-# function Set-OSVariables {
-#     if ($PSVersionTable.PSPlatform -eq 'Linux') {
-#         $global:IsLinux = $true
-#         $global:IsWindows = $false
-#     } elseif ($PSVersionTable.PSPlatform -eq 'Win32NT') {
-#         $global:IsWindows = $true
-#         $global:IsLinux = $false
-#     } else {
-#         Write-Error "Unsupported OS."
-
-#     }
-# }
-
-# # Set the OS variables
-# Set-OSVariables
 
 # Check Operating System and Install Azure CLI and Git
 if ($IsWindows) {
+    # Ensure Chocolatey is installed before running these commands
     # Install Azure CLI
     choco install -y azure-cli
     # Install Python
@@ -28,10 +14,9 @@ if ($IsWindows) {
     choco install -y burp-suite-free-edition
     choco install -y postman
     # Postman CLI
-    # powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
-    iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
+    iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))
     # XAMPP
-    iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o 'C:\xampp.exe'
+    iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -OutFile C:\xampp.exe
     Start-Process C:\xampp.exe
     # Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
     # # Start XAMPP as admin
@@ -39,8 +24,6 @@ if ($IsWindows) {
     # # Set Apache to run Port 8000 to avoid conflict with 365stealer on 443
     # cd C:\xampp\htdocs 
     # pip install -r requirements.txt
-
-    
 } elseif ($IsLinux) {
     # Install Azure CLI
     curl -L https://aka.ms/InstallAzureCli | bash
@@ -58,29 +41,6 @@ if ($IsWindows) {
 } else {
     Write-Output "Unsupported OS."
 }
-
-    # # Install Azure CLI
-    # choco install -y azure-cli
-    # # Install Python
-    # Install-Package python -Scope CurrentUser
-    # # Install Git
-    # choco install -y git
-    # choco install -y poshgit
-    # choco install -y terraform
-    # choco install -y azure-functions-core-tools
-    # choco install -y burp-suite-free-edition
-    # choco install -y postman
-    # # Postman CLI
-    # powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
-    # # XAMPP
-    # iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -o C:\xampp.exe
-    # Start-Process C:\xampp.exe
-    # Copy-Item $toolsPath\365-Stealer\* C:\xampp\htdocs
-    # # Start XAMPP as admin
-    # # uncomment ;extension=sqlite3` from  Apache/php.ini
-    # # Set Apache to run Port 8000 to avoid conflict with 365stealer on 443
-    # cd C:\xampp\htdocs 
-    # pip install -r requirements.txt
 
 # Powershell Modules
 # Install-Module PSWindowsUpdate -Accept -Force
@@ -248,23 +208,6 @@ pip install -r requirements.txt
 cd ..
 
 # AzureHound - Download the correct AzureHound binary for the detected OS
-# $tok = $tokenz.refresh_token
-# $osType = $env:OS
-# $binaryName = ""
-# $exePath = ""
-# if ($osType -eq "Windows_NT") {
-#     $os = "windows"
-#     Write-Output "Detected Windows OS."
-#     $binaryName = "azurehound-windows-amd64.zip"
-#     $exePath = ".\azurehound.exe"
-# } else {
-#     $os = "linux"
-#     Write-Output "Detected Linux OS."
-#     $binaryName = "azurehound-linux-amd64.zip"
-#     $exePath = "./azurehound"
-# }
-$tok = $tokenz.refresh_token
-$osType = $env:OS
 $binaryName = ""
 $exePath = ""
 if ($IsWindows) {
@@ -272,16 +215,18 @@ if ($IsWindows) {
     Write-Output "Detected Windows OS."
     $binaryName = "azurehound-windows-amd64.zip"
     $exePath = ".\azurehound.exe"
-} else {
+} elseif ($IsLinux) {
     $os = "linux"
     Write-Output "Detected Linux OS."
     $binaryName = "azurehound-linux-amd64.zip"
     $exePath = "./azurehound"
+} else {
+    Write-Output "Unsupported OS."
+    exit 1
 }
 
-$outputZipFile = "$binaryName"
+$outputZipFile = $binaryName
 $downloadUrl = "https://github.com/BloodHoundAD/AzureHound/releases/latest/download/$binaryName"
 Invoke-WebRequest -Uri $downloadUrl -OutFile $outputZipFile
 Expand-Archive -LiteralPath $outputZipFile -DestinationPath . -Force
 Remove-Item -Path $outputZipFile -Force
-

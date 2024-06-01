@@ -1,5 +1,17 @@
 ﻿## RepeatOffender
 
+### Quick Start
+```powershell
+# Install Choco
+iex (iwr https://raw.githubusercontent.com/MelloSec/RepeatOffender/main/Choco.ps1 -UseBasicParsing)
+
+# Clone repos and Install Azure Tools (cli, storage explorer included)
+iex (iwr https://raw.githubusercontent.com/MelloSec/RepeatOffender/main/Azure.ps1 -UseBasicParsing)
+
+# Import Modules
+iex (iwr https://raw.githubusercontent.com/MelloSec/RepeatOffender/main/Import-AzureModules.ps1 -UseBasicParsing)
+```
+
 ### Prep - Setup Chocolatey separately first so the Other Scripts can run with choco in PATH
 ```powershell
 .\choco.ps1

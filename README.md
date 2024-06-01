@@ -1,19 +1,5 @@
 ﻿## RepeatOffender
 
-### Stager - Run Choco and Azure Script
-```powershell
-$stagerUrl = "https://raw.githubusercontent.com/MelloSec/RepeatOffender/main/stager.ps1"
-
-$tempFile = ".\stager.ps1"
-Invoke-WebRequest -Uri $stagerUrl -OutFile $tempFile -UseBasicParsing
-
-# Execute the temporary file with the Azure switch
-& $tempFile -Azure
-
-# Clean up the temporary file
-Remove-Item $tempFile
-```
-
 ### Prep - Setup Chocolatey separately first so the Other Scripts can run with choco in PATH
 ```powershell
 .\choco.ps1

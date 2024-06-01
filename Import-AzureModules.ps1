@@ -15,8 +15,10 @@ function Import-ModuleIfExists {
 
 # Define paths to modules
 $modulesToCheck = @{
-    "TokenTactics" = "C:\Git\TokenTactics\TokenTactics.psd1"
+    "TokenTactics" = "C:\Git\TokenTactics\TokenTactics.psm1"
     "GraphRunner" = "C:\Git\GraphRunner\GraphRunner.ps1"
+    "PowerZure" = "C:\Git\CARTP\Tools\PowerZure\PowerZure.psm1"
+    "MicroBurst" = "C:\Git\CARTP\Tools\MicroBurst\MicroBurst.psm1"
 }
 
 # Check and import the modules
@@ -25,7 +27,7 @@ foreach ($module in $modulesToCheck.GetEnumerator()) {
 }
 
 # Import other required modules
-$requiredModules = @("AADInternals", "Az", "AzureADPreview", "MSOnline", "Microsoft.Graph")
+$requiredModules = @("AADInternals", "Az", "AzureADPreview", "MSOnline", "Microsoft.Graph", "ExchangeOnlineManagement")
 
 foreach ($module in $requiredModules) {
     Write-Output "Importing module: $module"

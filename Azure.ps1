@@ -279,7 +279,7 @@ if ($IsWindows) {
     $exePath = "./azurehound"
 }
 
-$outputZipFile = $binaryName
+$outputZipFile = "$binaryName"
 $downloadUrl = "https://github.com/BloodHoundAD/AzureHound/releases/latest/download/$binaryName"
 Invoke-WebRequest -Uri $downloadUrl -OutFile $outputZipFile
 Expand-Archive -LiteralPath $outputZipFile -DestinationPath . -Force

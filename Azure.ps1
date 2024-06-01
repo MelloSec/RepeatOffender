@@ -4,8 +4,8 @@ if ($IsWindows) {
     # Ensure Chocolatey is installed before running these commands
     # Install Azure CLI
     choco install -y azure-cli
-    # Install Python
-    Install-Package python -Scope CurrentUser
+    # Install Storage Explorer
+    choco install -y microsoftazurestorageexplorer
     # Install Git
     choco install -y git
     choco install -y poshgit
@@ -15,6 +15,8 @@ if ($IsWindows) {
     choco install -y postman
     # Postman CLI
     iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))
+    # Install Python
+    Install-Package python -Scope CurrentUser
     # XAMPP
     iwr https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe -OutFile C:\xampp.exe
     Start-Process C:\xampp.exe

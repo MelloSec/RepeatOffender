@@ -39,33 +39,33 @@ Expand-Archive -Path $outfile -DestinationPath .\TeamFiltration
 
 # Clone repositories for various tools
 git clone https://github.com/dafthack/MailSniper.git
-git clone https://github.com/dafthack/MFASweep
-git clone https://github.com/LMGsec/o365creeper
-git clone https://github.com/dafthack/GraphRunner
+git clone https://github.com/dafthack/MFASweep.git
+git clone https://github.com/LMGsec/o365creeper.git
+git clone https://github.com/dafthack/GraphRunner.git
 git clone https://github.com/rvrsh3ll/TokenTactics.git
 git clone https://github.com/f-bader/TokenTacticsV2.git
-git clone https://github.com/CompassSecurity/TokenTormentor
-git clone https://github.com/CompassSecurity/TokenPhisher
-git clone https://github.com/mellosec/cartp
-git clone https://github.com/mellosec/phirstphish
-git clone https://github.com/rvrsh3ll/Azure-App-Tools
+git clone https://github.com/CompassSecurity/TokenTormentor.git
+git clone https://github.com/CompassSecurity/TokenPhisher.git
+git clone https://github.com/mellosec/cartp.git
+git clone https://github.com/mellosec/phirstphish.git
+git clone https://github.com/rvrsh3ll/Azure-App-Tools.git
 git clone https://github.com/csandker/Azure-AccessPermissions.git
 git clone https://github.com/NetSPI/MicroBurst.git
 git clone https://github.com/hausec/PowerZure.git
 git clone https://github.com/FortyNorthSecurity/Egress-Assess.git
-git clone https://github.com/samratashok/nishang
-git clone https://github.com/dafthack/MSOLSpray
+git clone https://github.com/samratashok/nishang.git
+git clone https://github.com/dafthack/MSOLSpray.git
 git clone https://github.com/0xZDH/Omnispray.git
-git clone https://github.com/0xZDH/o365spray
-git clone https://github.com/optiv/Go365
-git clone https://github.com/MarkoH17/Spray365
+git clone https://github.com/0xZDH/o365spray.git
+git clone https://github.com/optiv/Go365.git
+git clone https://github.com/MarkoH17/Spray365.git
 cd Spray365
 pip install -r requirements.txt -U
 cd ..
 
 # BlobHunter
 git clone https://github.com/cyberark/BlobHunter.git $toolsPath\BlobHunter
-cd $toolsPath\Blobhunter
+cd $toolsPath\BlobHunter
 pip3 install -r requirements.txt
 cd ..
 
@@ -79,17 +79,21 @@ Expand-Archive -Path geckodriver-win.zip -DestinationPath .\geckodriver
 Remove-Item geckodriver-win.zip
 
 # Fireprox
-git clone https://github.com/ustayready/fireprox
+git clone https://github.com/ustayready/fireprox.git
 cd fireprox
 pip install -r requirements.txt
 cd ..
 
-# Additional repositories
-git clone https://github.com/jsa2/caOptics
-git clone https://github.com/0xZDH/BridgeKeeper
+# CAP Gap Analyzer
+git clone https://github.com/jsa2/caOptics.git
+
+# Bridgekeeper for scraping LinkedIn
+git clone https://github.com/0xZDH/BridgeKeeper.git
 cd BridgeKeeper
 pip install -r requirements.txt
 cd ..
+
+# 365 Stealer
 git clone https://github.com/AlteredSecurity/365-Stealer.git
 cd 365-Stealer
 pip install -r requirements.txt

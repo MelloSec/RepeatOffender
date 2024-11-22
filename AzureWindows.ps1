@@ -7,6 +7,7 @@ choco install -y poshgit
 choco install -y terraform
 choco install -y azure-functions-core-tools
 choco install -y burp-suite-free-edition
+choco install -y firefox
 choco install -y postman
 # Postman CLI
 iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))
